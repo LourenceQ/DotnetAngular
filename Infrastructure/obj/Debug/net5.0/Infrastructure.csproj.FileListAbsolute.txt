@@ -12,3 +12,4 @@ D:\MyCodingEnvironment\Repositories\DotnetAngular\Infrastructure\obj\Debug\net5.
 D:\MyCodingEnvironment\Repositories\DotnetAngular\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
 D:\MyCodingEnvironment\Repositories\DotnetAngular\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
 D:\MyCodingEnvironment\Repositories\DotnetAngular\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+D:\MyCodingEnvironment\Repositories\DotnetAngular\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete

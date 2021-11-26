@@ -58,3 +58,4 @@ D:\MyCodingEnvironment\Repositories\DotnetAngular\API\bin\Debug\net5.0\Core.dll
 D:\MyCodingEnvironment\Repositories\DotnetAngular\API\bin\Debug\net5.0\Infrastructure.dll
 D:\MyCodingEnvironment\Repositories\DotnetAngular\API\bin\Debug\net5.0\Infrastructure.pdb
 D:\MyCodingEnvironment\Repositories\DotnetAngular\API\bin\Debug\net5.0\Core.pdb
+D:\MyCodingEnvironment\Repositories\DotnetAngular\API\obj\Debug\net5.0\API.csproj.CopyComplete
