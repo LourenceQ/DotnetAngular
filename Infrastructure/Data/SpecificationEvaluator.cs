@@ -30,7 +30,6 @@ namespace Infrastructure.Data
                 query = query.OrderByDescending(spec.OrderByDescending);
             }
 
-
             query = spec.Includes.Aggregate(query, (currrent, include) => currrent.Include(include));
             
             return query;
