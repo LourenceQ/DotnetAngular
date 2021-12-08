@@ -35,7 +35,7 @@ namespace API
         {
 
             services.AddControllers();
-            services.AddDbContext<StoreContext>(x => 
+            services.AddDbContext<StoreContext>(x =>
                 x.UseSqlite(_configuration.GetConnectionString("DefaultConnection")));
             services.AddSwaggerGen(c =>
             {
@@ -44,7 +44,7 @@ namespace API
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
             services.AddAutoMapper(typeof(MappingProfiles));
-            services.Configure<ApiBehaviorOptions>(options => 
+            services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.InvalidModelStateResponseFactory = actionContext =>
                 {
@@ -52,7 +52,7 @@ namespace API
                         .Where(e => e.Value.Errors.Count > 0)
                         .SelectMany(x => x.Value.Errors)
                         .Select(x => x.ErrorMessage).ToArray();
-                    var errorResponse = new ApiValidationErrorResponse 
+                    var errorResponse = new ApiValidationErrorResponse
                     {
                         Errors = errors
                     };
@@ -66,22 +66,24 @@ namespace API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseMiddleware<ExceptionMiddleware>();
-            
-            if (env.IsDevelopment())
-            {    
-                //app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
-            }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
+
+            // if (env.IsDevelopment())
+            // {
+            //     //app.UseDeveloperExceptionPage();
+
+            // }
 
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            
+
             app.UseStaticFiles();
-            
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
