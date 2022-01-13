@@ -32,15 +32,26 @@ export class ShopComponent implements OnInit {
     this.getTypes();
   }
 
+  // getProducts() {
+  //   this.shopService.getProducts(this.shopParams).subscribe(response => {
+  //     this.products = response?.data;
+  //     this.shopParams.pageNumber = response?.pageIndex;
+  //     this.shopParams.pageSize = response?.pageSize;
+  //     this.totalCount = response.count;
+  //   }, error => {
+  //     console.log(error);
+  //   });
+  // }
+
   getProducts() {
-    this.shopService.getProducts(this.shopParams).subscribe(response => {
-      this.products = response?.data;
-      this.shopParams.pageNumber = response?.pageIndex;
-      this.shopParams.pageSize = response?.pageSize;
-      this.totalCount = response.count;
-    }, error => {
-      console.log(error);
-    });
+    this.shopService.getProducts(this.shopParams).subscribe({
+      next: (response) => (this.products = response?.data, 
+                           this.shopParams.pageNumber = response?.pageIndex,
+                           this.shopParams.pageSize = response?.pageSize,
+                           this.totalCount = response.count),
+      error: (error) => console.error(error),
+      complete: () => console.info('complete')
+    })
   }
 
   getBrands() {
