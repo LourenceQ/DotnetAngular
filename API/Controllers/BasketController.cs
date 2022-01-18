@@ -9,8 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace API.Controllers
-{
-    [Route("[controller]")]
+{    
     public class BasketController : BaseApiController
     {
         private readonly ILogger<BasketController> _logger;
