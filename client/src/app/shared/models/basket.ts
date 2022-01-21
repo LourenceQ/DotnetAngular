@@ -7,7 +7,7 @@ export interface IBasket {
   
   export interface IBasketItem {
     id: number
-    productname: string
+    productName: string
     price: number
     quantity: number
     pictureUrl: string
@@ -17,6 +17,6 @@ export interface IBasket {
 
   export class Basket implements IBasket {
     id = uuidv4();
-    items: IBasketItem[];
+    items: IBasketItem[] = [];
   }
   
