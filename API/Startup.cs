@@ -1,24 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using API.Errors;
 using API.Extensions;
-using API.Helpers;
 using API.Middleware;
-using Core.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using StackExchange.Redis;
 
 namespace API
@@ -55,7 +43,10 @@ namespace API
                 return ConnectionMultiplexer.Connect(configuration);
             });
 
+            services.AddIdentityServices();
+
             services.AddApplicationServices();
+
             services.AddSwaggerDocumentation();                
 
             services.AddCors(opt => 
