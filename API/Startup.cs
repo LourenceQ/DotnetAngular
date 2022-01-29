@@ -43,9 +43,9 @@ namespace API
                 return ConnectionMultiplexer.Connect(configuration);
             });
 
-            services.AddIdentityServices(_configuration);
-
             services.AddApplicationServices();
+
+            services.AddIdentityServices(_configuration);
 
             services.AddSwaggerDocumentation();                
 
@@ -73,9 +73,9 @@ namespace API
 
             app.UseCors("CorsPolicy");
 
-            app.UseAuthorization();
-
             app.UseAuthentication();
+            
+            app.UseAuthorization();            
 
             app.UseSwaggerDocumentation();
 
