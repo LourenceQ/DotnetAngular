@@ -1,10 +1,10 @@
 button.nav-link {
     background: #e9ecef;
     border-radius: 0;
-    order: none;
+    border: none;
 
     &:focus {
-        online: none;
+        outline: none;
     }
     &.active:hover {
         color: white;
