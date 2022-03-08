@@ -6,7 +6,7 @@
                 #appStepper>
                 
                 <cdk-step [label]="'Address'">
-                    <app-checkout-address></app-checkout-address>
+                    <app-checkout-address [checkoutForm]="checkoutForm" ></app-checkout-address>
                 </cdk-step>
 
                 <cdk-step [label]="'Delivery'">
