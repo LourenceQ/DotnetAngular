@@ -11,7 +11,8 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.createCheckoutForm();
   }
 
   createCheckoutForm() {
@@ -22,7 +23,7 @@ export class CheckoutComponent implements OnInit {
         street: [null, Validators.required],
         city: [null, Validators.required],
         state: [null, Validators.required],
-        zipcode: [null, Validators.required]
+        zipcode: [null, Validators.required],
       }),
       deliveryForm: this.fb.group({
         deliveryMethod: [null, Validators.required]
