@@ -5,31 +5,30 @@
 ### Descrição
 
 
+- Usando o Automapper no ASP.NET Core
 
+- Implementação dos design patterns Repository Pattern, Unity of Work Pattern e Specification Pattern com .Net Core
 
+- Configuração de vários DbContext como limitadores de contexto
 
--Usando o Automapper no ASP.NET Core
+- Usando ASP.NET Identity para login e registro
 
--Implementação dos design patterns Repository Pattern, Unity of Work Pattern e Specification Pattern com .Net Core
+- Paginação, classificação, pesquisa e filtragem
 
--Configuração de vários DbContext como limitadores de contexto
+- Usando o Redis para armazenar a cesta de compras
 
--Usando ASP.NET Identity para login e registro
+- Usando os módulos em Angular para criar rotas com Lazy Loading.
 
--Paginação, classificação, pesquisa e filtragem
+- Crianção de UI com Angular usando a CLI Angular
 
--Usando o Redis para armazenar a cesta de compras
+- Construindo uma interface de usuário de usando o Bootstrap
 
--Usando os módulos em Angular para criar rotas com Lazy Loading.
+- Criando componentes de formulário reutilizáveis ​​usando formulários Angular Reactive
 
--Crianção de UI com Angular usando a CLI Angular
+- Criando pedidos a partir do carrinho de compras
 
--Construindo uma interface de usuário de usando o Bootstrap
+- Aceitar pagamentos via Stripe usando os novos padrões da UE para segurança 3D
 
--Criando componentes de formulário reutilizáveis ​​usando formulários Angular Reactive
+- Publicando o aplicativo no Linux
 
--Criando pedidos a partir do carrinho de compras
-
--Aceitar pagamentos via Stripe usando os novos padrões da UE para segurança 3D
-
--Publicando o aplicativo no Linux
+###
