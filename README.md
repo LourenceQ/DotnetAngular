@@ -5,7 +5,7 @@
 ### Descrição
 
 
-- Usando o Automapper no ASP.NET Core
+- Usando Entity FrameworkCore e Automapper no ASP.NET Core
 
 - Implementação dos design patterns Repository Pattern, Unity of Work Pattern e Specification Pattern com .Net Core
 
