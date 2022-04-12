@@ -26,12 +26,3 @@ export interface IOrderItem {
   price: number;
   quantity: number;
 }
-
-  // export interface IOrderItem {
-  //   firstName: string
-  //   lastName: string
-  //   street: string
-  //   city: string
-  //   state: string
-  //   zipCode: string
-  // }
