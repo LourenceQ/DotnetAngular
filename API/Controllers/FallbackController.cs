@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
 
-    public class MapFallbackToController : Controller
+    public class FallbackController : Controller
     {
         public IActionResult Index()
         {
