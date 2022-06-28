@@ -6,11 +6,11 @@ using Core.Interfaces;
 
 namespace Infrastructure.Data
 {
-    public class UnityOfWork : IUnityOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly StoreContext _context;
         private Hashtable _repositories;
-        public UnityOfWork(StoreContext context)
+        public UnitOfWork(StoreContext context)
         {
             _context = context;
         }
