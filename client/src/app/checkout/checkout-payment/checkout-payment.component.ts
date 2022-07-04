@@ -54,13 +54,13 @@ export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
     this.cardExpiry.destroy();
     this.cardCvc.destroy(); 
   }
+
   onChange({error}) {
     if(error) {
       this.cardErrors = error.message;
     } else {
       this.cardErrors = null;
     }
-
   }
 
   
@@ -69,14 +69,29 @@ export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
     const orderToCreate = this.getOrderToCreate(basket);
     this.checkoutService.createOrder(orderToCreate).subscribe((order: IOrder) => {
       this.toastr.success('Order Created successfully');
-      this.basketService.deleteLocalBasket(basket.id);
-      const navigationsExtras: NavigationExtras = {state: order};
-      this.router.navigate(['checkout/success'], navigationsExtras);
+      this.stripe.confirmCardPayment(basket.clientSecret, {
+        payment_method: {
+          card: this.cardNumber,
+          billing_details: {
+            name: this.checkoutForm.get('paymentForm').get('nameOnCard').value
+          }
+        }
+      }).then(result => {
+        console.log(result);
+        if(result.paymentIntent) {
+          this.basketService.deleteLocalBasket(basket.id);
+          const navigationsExtras: NavigationExtras = {state: order};
+          this.router.navigate(['checkout/success'], navigationsExtras);
+        } else {
+          this.toastr.error('Payment error');
+        }
+      });      
     }, error => {
       this.toastr.error(error.message);
       console.log(error);
     })
   }
+
   getOrderToCreate(basket: IBasket) {
     return {
       basketId: basket.id,
