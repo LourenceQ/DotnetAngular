@@ -50,8 +50,10 @@
     </button>
 
     <button 
+        [disabled]="loading"
         (click)="submitOrder()"
         class="btn btn-primary">
         Submit Order <i class="fa fa-angle-right"></i>
+        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
     </button>
 </div>
