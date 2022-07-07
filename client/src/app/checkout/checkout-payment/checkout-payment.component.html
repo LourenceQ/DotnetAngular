@@ -34,7 +34,11 @@
     </button>
 
     <button 
-        [disabled]="loading"
+        [disabled]="loading
+        || checkoutForm.get('paymentForm').invalid
+        || !cardNumberValid
+        || !cardExpiryValid
+        || !cardCvcValid"
         (click)="submitOrder()"
         class="btn btn-primary">
         Submit Order <i class="fa fa-angle-right"></i>
