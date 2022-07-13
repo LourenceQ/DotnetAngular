@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 import { map } from 'rxjs/internal/operators/map';
 import { IBrand } from '../shared/models/brands';
 import { IPagination } from '../shared/models/pagination';
@@ -12,6 +13,9 @@ import { ShopParams } from '../shared/models/shopParams';
 })
 export class ShopService {
   baseUrl = 'https://localhost:5001/api/';
+  products: IProduct[] = [];
+  brands: IBrand[] = [];
+  types: IType[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -34,19 +38,51 @@ export class ShopService {
     params = params.append('pageIndex', shopParams.pageNumber.toString());
     params = params.append('pageIndex', shopParams.pageSize.toString());
 
-    return this.http.get<IPagination>(this.baseUrl + 'products', { observe: 'response', params }).pipe(map(response => { return response.body; }));
+    return this.http
+      .get<IPagination>(this.baseUrl + 'products', { observe: 'response', params })
+      .pipe(
+        map(response => { 
+          this.products = response.body.data;
+          return response.body; 
+        })
+      );
   }
 
   getPoroduct(id: number) {
+    const product = this.products.find(p => p.id === id);
+    if(product) {
+      return of(product);
+    }
+
     return this.http.get<IProduct>(this.baseUrl + 'products/' + id);
   }
 
   getBrands() {
-    return this.http.get<IBrand[]>(this.baseUrl + 'products/brands');
+    if(this.brands.length > 0) {
+      return of(this.brands);
+    }
+
+    return this.http.get<IBrand[]>(this.baseUrl + 'products/brands').pipe(
+      map( response => {
+        this.brands = response;
+        console.log(response);
+        console.log(this.brands);
+        return response;        
+      })
+    );
   }
 
   getTypes() {
-    return this.http.get<IType[]>(this.baseUrl + 'products/types');
+    if(this.types.length > 0) {
+      return of(this.types);
+    }
+    return this.http.get<IType[]>(this.baseUrl + 'products/types')
+      .pipe(
+        map(response => {
+          this.types = response;
+          return response;
+        })
+      );
   }
 
 }
