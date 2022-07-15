@@ -29,7 +29,7 @@ export class ShopComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.getProducts();
+    this.getProducts(true);
     this.getBrands();
     this.getTypes();
   }
@@ -45,8 +45,8 @@ export class ShopComponent implements OnInit {
   //   });
   // }
 
-  getProducts() {
-    this.shopService.getProducts().subscribe({
+  getProducts(useCache = false) {
+    this.shopService.getProducts(useCache).subscribe({
       next: (response) => (this.products = response?.data,
                            this.totalCount = response.count),
       error: (error) => console.error(error),
@@ -112,8 +112,8 @@ export class ShopComponent implements OnInit {
 
   onReset() {
     this.searchTerm.nativeElement.value = '';
-    const params = new ShopParams();
-    this.shopService.setShopParams(params);
+    this.shopParams = new ShopParams();
+    this.shopService.setShopParams(this.shopParams);
     this.getProducts();
   }
 
