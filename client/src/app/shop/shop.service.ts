@@ -69,7 +69,7 @@ export class ShopService {
     this.shopParams = params;
   }
 
-  getSgopParams() {
+  getShopParams() {
     return this.shopParams;
   }
 
